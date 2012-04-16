@@ -1,23 +1,45 @@
 require 'in_every/enumerator_extensions'
 
+#Randomly execute a block of code x number of times in every number of runs
 class InEvery
+  #thrown if there is a problem setting up InEvery
   class SetupException < Exception; end
 
-  def initialize(enum, executions)
+  #create new in every instance
+  #
+  #==Parameters:
+  #enum::
+  # enumeration number for cycling through executions
+  #
+  #executions::
+  #  number or times the proc is to be randomly executed
+  #
+  #method::
+  #  What to execute randomly in a cycle
+  #
+  #==Returns:
+  #  new instance of InEvery
+  def initialize(enum, executions, method)
     @executions = (executions - 1)
     @enum = enum
+    @method = method
     generate_occurances
+    raise SetupException.new("occurancies must be greater than executions") if @enum.max > @executions
   end
 
-  def start(&block)
-    @method = block
-  end
-
+  #execute the given proc if randomly
+  #
+  #==Parameters:
+  #args::
+  #  arguments required to execute the proc
+  #
+  #==Returns:
+  #the result of the block or nil if nothing was executed
   def execute *args
     @counter ||= 0
-    if @counter == @failures.first
+    if @counter == @execution_points.first
       result = @method.call(*args)
-      @failures.delete_at(0)
+      @execution_points.delete_at(0)
     end
     if @counter == @executions
       @counter = nil
@@ -30,8 +52,7 @@ class InEvery
 
   private
 
-  def generate_occurances
-    raise SetupException.new("occurancies must be greater than executions") if @enum.max > @executions
-    @failures = (0..(@executions)).to_a.sample(@enum.max).sort
+  def generate_occurances #nodoc
+    @execution_points = (0..(@executions)).to_a.sample(@enum.max).sort
   end
 end
