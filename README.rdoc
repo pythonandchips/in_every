@@ -1,6 +1,29 @@
-= in_every
+= In Every
 
-Description goes here.
+Execute a block of code randomly x number of times in a cycle
+
+== Current Status
+
+Ready and able
+
+
+== Installing
+
+  gem install in_every
+
+
+== Usage
+
+Setup
+
+  #setup in_every instance with block of code to be executed
+  in_every = 5.times.in_every(20) do |argument|
+    #insert really impressive code here
+  end
+
+  #execute a cycle. this will ether return the value from the block or nil if the block was not executed.
+  in_every.execute("some value")
+  
 
 == Contributing to in_every
  
