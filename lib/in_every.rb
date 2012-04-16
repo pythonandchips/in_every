@@ -1,4 +1,3 @@
-require 'in_every/object_extensions'
 require 'in_every/enumerator_extensions'
 
 class InEvery
