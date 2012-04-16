@@ -1,6 +1,13 @@
 require 'in_every/enumerator_extensions'
 
 #Randomly execute a block of code x number of times in every number of runs
+#Example:
+#  in_every = 5.times.in_every(20) do
+#    ##some really cool code
+#  end
+#
+#  #will return value of the block if executed or nil if nothing happened
+#  in_every.execute
 class InEvery
   #thrown if there is a problem setting up InEvery
   class SetupException < Exception; end

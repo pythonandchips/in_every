@@ -4,7 +4,7 @@ describe InEvery do
 
   context "with 5 occrancies in every 10 executions" do
     Given(:in_every) do
-      5.times.in_every(10) do
+      5.times.in_every(10) do |argument|
         @run_count += 1
       end
     end
@@ -12,7 +12,7 @@ describe InEvery do
     When do
       @run_count = 0
       @values = []
-      (1..10).each{@values << in_every.execute}
+      (1..10).each{@values << in_every.execute("no arg")}
     end
 
     Then { @run_count.should eql 4 }

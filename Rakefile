@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "in_every"
   gem.homepage = "http://github.com/pythonandchips/in_every"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{execute code x number of time in every y number of atempts}
+  gem.description = %Q{In every will randomly execute the supplied block of code randomly. It guarantees the code will be executed the given number of times in the code. }
   gem.email = "pythonandchips@gmail.com"
   gem.authors = ["Colin Gemmell"]
   # dependencies defined in Gemfile
