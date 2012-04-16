@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "in_every.gemspec",
     "lib/in_every.rb",
     "lib/in_every/enumerator_extensions.rb",
     "spec/in_every/enumerator_extensions_spec.rb",
